@@ -85,3 +85,25 @@ const displayTransactions = function (transactions) {
 displayTransactions(account1.transactions);
 
 // console.log(containerTransactions.innerHTML);
+const createNicknames = function (accs) {
+  accs.forEach(function (acc) {
+    acc.nickname = acc.userName
+      .toLowerCase()
+      .split(' ')
+      .map(word => word[0])
+      .join();
+  });
+};
+createNicknames(accounts);
+console.log(accounts);
+// const userName = 'Oliver Avila'; // nickname = 'oa'
+// const nickname = userName
+//   .toLowerCase()
+//   .split(' ')
+//   .map(word => word[0])
+//   // .map(function (word) {
+//   //   return word[0];
+//   // })
+//   .join();
+
+// console.log(nickname);
