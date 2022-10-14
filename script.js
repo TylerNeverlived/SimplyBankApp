@@ -107,3 +107,30 @@ console.log(accounts);
 //   .join();
 
 // console.log(nickname);
+
+const displayBalance = function (transactions) {
+  const balance = transactions.reduce((acc, trans) => acc + trans, 0);
+  labelBalance.textContent = `${balance}$`;
+};
+
+displayBalance(account1.transactions);
+
+const displayTotal = function (transactions) {
+  const depositesTotal = transactions
+    .filter(trans => trans > 0)
+    .reduce((acc, trans) => acc + trans, 0);
+  labelSumIn.textContent = `${depositesTotal}$`;
+
+  const withdrawalsTotal = transactions
+    .filter(trans => trans < 0)
+    .reduce((acc, trans) => acc + trans, 0);
+  labelSumOut.textContent = `${withdrawalsTotal}$`;
+
+  const interestTotal = transactions
+    .filter(trans => trans > 0)
+    .map(depos => (depos * 1.1) / 100)
+    .filter((interes, index, arr) => interes >= 5)
+    .reduce((acc, inerest) => acc + inerest, 0);
+  labelSumInterest.textContent = `${interestTotal}$`;
+};
+displayTotal(account1.transactions);
